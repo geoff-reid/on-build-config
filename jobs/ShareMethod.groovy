@@ -59,15 +59,16 @@ def buildImages(String repo_dir){
     // retry times for images build to avoid failing caused by network
     int retry_times = 3
     stage("Images Build"){
-        parallel 'vagrant build':{
-            retry(retry_times){
-                load(repo_dir + "/jobs/build_vagrant/build_vagrant.groovy")
-            }
-        }, 'ova build':{
-            retry(retry_times){
-                load(repo_dir + "/jobs/build_ova/build_ova.groovy")
-            }
-        }, 'build docker':{
+//        parallel 'vagrant build':{
+//            retry(retry_times){
+//                load(repo_dir + "/jobs/build_vagrant/build_vagrant.groovy")
+//            }
+//        }, 'ova build':{
+//            retry(retry_times){
+//                load(repo_dir + "/jobs/build_ova/build_ova.groovy")
+//            }
+//        }, 'build docker':{
+	parallel 'build docker':{
             retry(retry_times){
                 load(repo_dir + "/jobs/build_docker/build_docker.groovy")
             }
@@ -75,11 +76,12 @@ def buildImages(String repo_dir){
     }
 
     stage("Post Test"){
-        parallel 'vagrant post test':{
-            load(repo_dir + "/jobs/build_vagrant/vagrant_post_test.groovy")
-        }, 'ova post test loader':{
-            load(repo_dir + "/jobs/build_ova/ova_post_test.groovy")
-        }, 'docker post test loader':{
+//        parallel 'vagrant post test':{
+//            load(repo_dir + "/jobs/build_vagrant/vagrant_post_test.groovy")
+//        }, 'ova post test loader':{
+//            load(repo_dir + "/jobs/build_ova/ova_post_test.groovy")
+//        }, 'docker post test loader':{
+        parallel 'docker post test loader':{
             load(repo_dir + "/jobs/build_docker/docker_post_test.groovy")
         }
     }
@@ -106,16 +108,16 @@ def createTag(String repo_dir){
 }
 
 def buildAndPublish(Boolean publish, Boolean tag, String repo_dir){
-    buildPackage(repo_dir)
+//    buildPackage(repo_dir)
 
     buildImages(repo_dir)
 
-    if(tag){
-        createTag(repo_dir)
-    }
-    if(publish){
-        publishImages(repo_dir)
-    }
+//    if(tag){
+//        createTag(repo_dir)
+//    }
+//    if(publish){
+//        publishImages(repo_dir)
+//    }
 }
 
 def sendResult(boolean sendJenkinsBuildResults, boolean sendTestResults){
