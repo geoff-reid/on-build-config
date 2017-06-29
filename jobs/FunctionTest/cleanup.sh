@@ -1,9 +1,9 @@
 #!/bin/bash -x
 
-export VCOMPUTE=("${NODE_NAME}-Rinjin1","${NODE_NAME}-Rinjin2","${NODE_NAME}-Quanta")
+export VCOMPUTE=("${NODE_NAME}-Dell-R630","${NODE_NAME}-Quanta-T41","${NODE_NAME}-Quanta-D51")
 VCOMPUTE="${VCOMPUTE}"
 if [ -z "${VCOMPUTE}" ]; then
-  VCOMPUTE=("jvm-Quanta_T41-1" "jvm-vRinjin-1" "jvm-vRinjin-2")
+  VCOMPUTE=("jvm-Quanta-T41" "jvm-Quanta-D51" "jvm-Dell-R63")
 fi
 VCOMPUTE+=("${NODE_NAME}-ova-for-post-test")
 cleanupVMs(){
