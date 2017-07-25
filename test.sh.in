@@ -93,7 +93,7 @@ nodesCreate() {
   cd ${WORKSPACE}/build-config/deployment/
   if [ "${USE_VCOMPUTE}" != "false" ]; then
 #    execWithTimeout "ovftool  --noSSLVerify --diskMode=${DISKMODE} --datastore=${DATASTORE} --name='${NODE_NAME}-Dell-R630' --net:'VM Network 2=${NODE_NAME}-switch' '${HOME}/isofarm/OVA/vbmc_dell_r630_release-2-0_12.ova'   vi://${ESXI_USER}:${ESXI_PASS}@${ESXI_HOST}"
-    execWithTimeout "ovftool  --noSSLVerify --diskMode=${DISKMODE} --datastore=${DATASTORE} --name='${NODE_NAME}-Quanta-T41' --net:'VM Network 2=${NODE_NAME}-switch' '${HOME}/isofarm/OVA/vbmc_dell_r63020170725_2.ova'   vi://${ESXI_USER}:${ESXI_PASS}@${ESXI_HOST}"
+    execWithTimeout "ovftool  --noSSLVerify --diskMode=${DISKMODE} --datastore=${DATASTORE} --name='${NODE_NAME}-Quanta-T41' --net:'VM Network 2=${NODE_NAME}-switch' '${HOME}/isofarm/OVA/vbmc_dell_r630_20170725_2.ova'   vi://${ESXI_USER}:${ESXI_PASS}@${ESXI_HOST}"
 #    execWithTimeout "ovftool  --noSSLVerify --diskMode=${DISKMODE} --datastore=${DATASTORE} --name='${NODE_NAME}-Quanta-D51' --net:'VM Network 2=${NODE_NAME}-switch' '${HOME}/isofarm/OVA/vbmc_quanta_d51_release-2-0_12.ova'   vi://${ESXI_USER}:${ESXI_PASS}@${ESXI_HOST}"
   else
     nodesOff
